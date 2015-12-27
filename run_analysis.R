@@ -46,7 +46,7 @@ Ext <- TTmerge[, extract]
 
 # 3. Use descriptive activity names to name the activities in the data set
 
-
+## setSomething <- c("WALKING","WALKING_UPSTAIRS","WALKING_DOWNSTAIRS","SITTING","STANDING","LAYING")
 
 
 
@@ -55,13 +55,10 @@ Ext <- TTmerge[, extract]
 
 
 
-
 # 5. From the data set in step 4, creates a second, independent tidy data set
 #    with the average of each variable for each activity and each subject
 
 Test.dt <- data.table(Ext)
-#This takes the mean of every column broken down by participants and activities
-#TidyTest <- Test.dt[, lapply(.SD, mean)]
 write.table(Test.dt, file = "TidyTest.txt", row.names = FALSE)
 
 
