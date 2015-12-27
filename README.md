@@ -13,10 +13,10 @@ The assignment is to create an R script called run_analysis.R that does the foll
 ==============================================================================================
 
 Using R-Studio, preparation for working with the data includes:  √ done
-   a. Installing libraries and packages
-   b. Creating a temporary folder and downloading the .zip file of data
-     (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
-   c. These .txt files are then read as tables:
+   1. Installing libraries and packages
+   2. Creating a temporary folder and downloading the .zip file of data
+      (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+   3. These .txt files are then read as tables:
          UCI HAR Dataset/features.txt
          UCI HAR Dataset/test/subject_test.txt
          UCI HAR Dataset/test/X_test.txt
