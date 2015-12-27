@@ -10,7 +10,7 @@ The assignment is to create an R script called run_analysis.R that does the foll
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average
    of each variable for each activity and each subject.
-==============================================================================================
+=========================================================================================
 
 Using R-Studio, preparation for working with the data includes:  √ done
    1. Installing libraries and packages
@@ -29,13 +29,13 @@ The X and Y, test and train data are merged. √ done
 
 Using 'grep' only the mean and standard deviation columns are retained.  √ done
 
-These descriptive activity names are to be applied (incomplete):
-   WALKING
-   WALKING_UPSTAIRS
-   WALKING_DOWNSTAIRS
-   SITTING
-   STANDING
-   LAYING
+These six descriptive activity names are to be applied (incomplete):
+   1. WALKING
+   2. WALKING_UPSTAIRS
+   3. WALKING_DOWNSTAIRS
+   4. SITTING
+   5. STANDING
+   6. LAYING
 
 The data set is to be labeled with descriptive variable names. (incomplete)
 
