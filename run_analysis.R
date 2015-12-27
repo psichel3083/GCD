@@ -1,6 +1,12 @@
+# Install packages and load libraries
+install.packages("plyr")
+library(plyr)
+install.packages("dplyr")
+library(dplyr)
+library(data.table)
 
-# Create a temp folder
-# Download the .zip file
+
+# Create a temp folder and download the .zip file
 temp <- tempfile()
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", 
               temp)
@@ -8,7 +14,7 @@ unzip(temp, list = TRUE)
 
 # Read the needed data files
 features <- read.table(unzip(temp, "UCI HAR Dataset/features.txt"))
-names(features) <- c('whoknows', 'whocares')
+names(features) <- c('ID', 'activity')
 
 subject_test <- read.table(unzip(temp, "UCI HAR Dataset/test/subject_test.txt"))
 X_test <- read.table(unzip(temp, "UCI HAR Dataset/test/X_test.txt"))
@@ -19,25 +25,24 @@ Y_train <- read.table(unzip(temp, "UCI HAR Dataset/train/y_train.txt"))
 
 unlink(temp)
 
-
-# Install packages and load libraries
-install.packages("plyr")
-library(plyr)
-install.packages("dplyr")
-library(dplyr)
-library(data.table)
+# Label columns
+colnames(X_test) <- t(features[2])
+colnames(X_train) <-t(features[2])
 
 
-# 1. Merge the training and test sets to create one data set
+# 1. Merge X and Y sets of training and test data to create one new data set
+X_test$activity <- Y_test[, 1]
+X_test$ID <- subject_test[, 1]
+X_train$activity <- Y_train[, 1]
+X_train$ID <- subject_train[, 1]
 
-subject_merge <- rbind(subject_test, subject_train)
-X_merge <- rbind(X_test, X_train)
-Y_merge <- rbind(Y_test, Y_train)
+TTmerge <- rbind(X_test, X_train)
+#duplicated(colnames(TTmerge))
+#TTmerge <- TTmerge[, !duplicated(colnames(TTmerge))]
 
-# 2. Extract only the mean and standard deviation for each measurement 
-
-
-
+# 2. Extract only the mean and standard deviation for each measurement
+extract <- grep("-mean\\(\\)|-std\\(\\)", features$activity) 
+Ext <- TTmerge[, extract]
 
 # 3. Use descriptive activity names to name the activities in the data set
 
@@ -54,6 +59,9 @@ Y_merge <- rbind(Y_test, Y_train)
 # 5. From the data set in step 4, creates a second, independent tidy data set
 #    with the average of each variable for each activity and each subject
 
-
+Test.dt <- data.table(Ext)
+#This takes the mean of every column broken down by participants and activities
+#TidyTest <- Test.dt[, lapply(.SD, mean)]
+write.table(Test.dt, file = "TidyTest.txt", row.names = FALSE)
 
 
