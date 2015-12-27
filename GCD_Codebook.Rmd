@@ -78,14 +78,15 @@ There are 66 variables measuring mean and standard deviation. They are listed he
 66. fBodyBodyGyroJerkMag-std()
 
 ### Activity Labels ###
-1 WALKING
-2 WALKING_UPSTAIRS
-3 WALKING_DOWNSTAIRS
-4 SITTING
-5 STANDING
-6 LAYING
+These are the six activity labels
+1. WALKING
+2. WALKING_UPSTAIRS
+3. WALKING_DOWNSTAIRS
+4. SITTING
+5. STANDING
+6. LAYING
 
 
 ### Final Product ###
-tidy.txt
+TidyTest.txt is the final product of this assignment.
 
